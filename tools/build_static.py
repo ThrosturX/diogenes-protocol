@@ -11,6 +11,7 @@ CASES = ROOT / "case-studies"
 NAV = [
   ("Home", "index.md"),
   ("Start Here", "start-here.md"),
+  ("Why Diogenes", "why-diogenes.md"),
   ("Doctrine", "doctrine.md"),
   ("Templates", "templates.md"),
   ("Case Studies", "case-studies.md"),
@@ -45,10 +46,17 @@ def inline(text: str, prefix: str) -> str:
       href = prefix + href
     return f'<a href="{html.escape(href, quote=True)}">{label}</a>'
 
+  # links first
   text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", repl, text)
-  text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
-  return text
 
+  # inline code next
+  text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
+
+  # emphasis (simple)
+  text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
+  text = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", text)
+
+  return text
 def md_to_html(md: str, prefix: str) -> str:
   md = strip_front_matter(md).replace("\r\n", "\n")
   lines = md.split("\n")
