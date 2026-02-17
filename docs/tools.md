@@ -17,3 +17,5 @@ Swiss-army tooling comes later.
 
 - tools/scripts/new-packet.sh — create an evidence packet layout
 - tools/scripts/hash-inventory.sh — compute SHA256 hashes into EVIDENCE-INVENTORY.md
+- tools/scripts/utc-now.sh — print ISO8601 UTC timestamp
+- tools/scripts/pack.sh — export a case directory as .tgz

@@ -19,12 +19,13 @@
     </style>
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <section class="page-header">
       <h1 class="project-name">{{ site.title }}</h1>
       <h2 class="project-tagline tagline">{{ site.description }}</h2>
     </section>
 
-    <section class="main-content">
+    <section class="main-content" id="content">
       {% include nav.html %}
       {{ content }}
       <footer class="site-footer"></footer>

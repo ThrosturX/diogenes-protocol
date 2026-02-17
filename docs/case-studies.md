@@ -16,3 +16,11 @@ Structure (MVP):
 - Lessons learned
 
 (Placeholders will be replaced with redacted real cases.)
+
+## Publishing rules
+
+See: `case-studies/_PUBLISHING.md` and [Redaction policy](redaction.html).
+
+## Example
+
+- `case-studies/example-toy/`

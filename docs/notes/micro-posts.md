@@ -15,3 +15,10 @@ layout: default
 8. Diogenes might say: preservation is the first remedy. (Retention hold template)
 9. Diogenes might say: reimbursement needs receipts, not rage. (EU261 expenses appendix)
 10. Diogenes might say: templates are how you scale integrity. (Templates)
+
+## Canonical links
+- Start Here: /start-here.html
+- Templates: /templates.html
+- Packet spec: /packet-spec.html
+- Redaction: /redaction.html
+- Disclaimer: /disclaimer.html

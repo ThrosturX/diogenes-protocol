@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Diogenes Protocol tooling
-# SPDX-License-Identifier: AGPL-3.0-or-later
-# See NOTICE for attribution guidance.
-
 set -euo pipefail
 
 name="${1:-}"
@@ -11,56 +7,20 @@ if [ -z "$name" ]; then
   exit 1
 fi
 
-base="case-studies/$name"
-mkdir -p "$base/evidence/letters" \
-         "$base/evidence/screenshots" \
-         "$base/evidence/receipts" \
-         "$base/evidence/calls" \
-         "$base/evidence/logs" \
-         "$base/evidence/misc" \
-         "$base/notes"
+src="case-studies/_TEMPLATE"
+dst="case-studies/$name"
 
-cat > "$base/CASE.md" << 'EOT'
-# Case Study: <Title>
+if [ ! -d "$src" ]; then
+  echo "missing template: $src" >&2
+  exit 2
+fi
 
-## Context
-- Jurisdiction:
-- Counterparty:
-- Topic:
+if [ -e "$dst" ]; then
+  echo "already exists: $dst" >&2
+  exit 3
+fi
 
-## Timeline (UTC)
-- YYYY-MM-DDThh:mm:ssZ —
+mkdir -p "$dst"
+cp -a "$src/." "$dst/"
 
-## Claims vs Verifiable State
-- Claim:
-  - Evidence:
-  - Verifiable state:
-
-## Evidence Inventory
-- EVIDENCE-INVENTORY.md
-- evidence/ (see packet spec)
-
-## Mechanism Invoked
-- Policy/contract:
-- Statute/regulation:
-- Regulator:
-
-## Outcome
-- Result:
-- Dates:
-
-## Lessons
-- What worked:
-- What failed:
-- What to do next time:
-EOT
-
-cat > "$base/EVIDENCE-INVENTORY.md" << 'EOT'
-# Evidence Inventory
-
-| ID | File | Type | Source | Timestamp (UTC) | Hash | Notes |
-|---|---|---|---|---|---|---|
-| E1 |  |  |  |  |  |  |
-EOT
-
-echo "created: $base"
+echo "created: $dst"
