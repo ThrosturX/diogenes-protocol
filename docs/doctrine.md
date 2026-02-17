@@ -1,5 +1,6 @@
 ---
 title: Doctrine
+layout: default
 ---
 
 # Doctrine

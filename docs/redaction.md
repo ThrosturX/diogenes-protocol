@@ -1,5 +1,6 @@
 ---
 title: Redaction policy
+layout: default
 ---
 
 # Redaction policy (publish-safe)

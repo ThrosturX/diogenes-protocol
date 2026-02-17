@@ -1,5 +1,6 @@
 ---
 title: Case studies
+layout: default
 ---
 
 # Case studies

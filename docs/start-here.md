@@ -1,5 +1,6 @@
 ---
 title: Start Here
+layout: default
 ---
 
 # Start Here (5 minutes)

@@ -1,5 +1,6 @@
 ---
 title: Disclaimer
+layout: default
 ---
 
 # Disclaimer

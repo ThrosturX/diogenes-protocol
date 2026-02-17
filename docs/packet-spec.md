@@ -1,5 +1,6 @@
 ---
 title: Packet spec
+layout: default
 ---
 
 # Packet spec (MVP)

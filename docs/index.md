@@ -1,5 +1,6 @@
 ---
 title: Diogenes Protocol
+layout: default
 ---
 
 # Diogenes Protocol
