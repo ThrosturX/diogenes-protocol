@@ -1,64 +1,130 @@
-:root {
-  --text: #111;
+/* Diogenes Protocol — accessible, calm, no theatrics.
+   Inspiration: warm backgrounds + corner motif, but modern contrast + spacing. */
+
+:root{
+  --paper: #fbf7e6;     /* warm, not neon */
+  --ink: #121212;
   --muted: rgba(0,0,0,.72);
-  --line: rgba(0,0,0,.10);
-  --panel: rgba(0,0,0,.03);
+  --line: rgba(0,0,0,.12);
+  --panel: rgba(0,0,0,.04);
+  --accent: #b85c00;    /* restrained orange */
+  --accent2: #2346a8;   /* restrained blue */
 }
 
-html { scroll-behavior: smooth; }
-body { color: var(--text); }
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper: #0f0f10;
+    --ink: #f2f2f2;
+    --muted: rgba(255,255,255,.72);
+    --line: rgba(255,255,255,.16);
+    --panel: rgba(255,255,255,.06);
+    --accent: #ffb15a;
+    --accent2: #9fb5ff;
+  }
+}
 
-.main-content {
-  max-width: 56rem;
+html{ scroll-behavior: smooth; }
+body{
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* Optional corner sketch (OFF by default; add a local file to enable)
+body.has-sketch{
+  background-image: url("/assets/img/diogenes-sketch.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-attachment: fixed;
+  background-size: 240px;
+}
+*/
+
+.main-content{
+  max-width: 58rem;
   font-size: 17px;
 }
 
-.main-content p, .main-content li {
+.main-content p,
+.main-content li{
   line-height: 1.65;
 }
 
-.main-content a {
+.main-content h1,
+.main-content h2,
+.main-content h3{
+  margin-top: 1.8rem;
+}
+
+.main-content a{
+  color: var(--accent2);
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
 
-.site-nav {
-  padding: .65rem .85rem;
+.main-content a:visited{
+  color: color-mix(in srgb, var(--accent2) 70%, var(--ink) 30%);
+}
+
+.main-content a:hover{
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.site-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  padding: .75rem .9rem;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 14px;
   background: var(--panel);
 }
 
-.site-nav a {
-  padding: .25rem .45rem;
-  border-radius: 10px;
-}
-
-.site-nav a:hover {
-  background: rgba(0,0,0,.06);
+.site-nav a{
+  padding: .22rem .45rem;
+  border-radius: 12px;
+  font-weight: 650;
   text-decoration: none;
 }
 
-code {
+.site-nav a:hover{
+  background: rgba(0,0,0,.06);
+}
+
+@media (prefers-color-scheme: dark){
+  .site-nav a:hover{ background: rgba(255,255,255,.08); }
+}
+
+code{
   padding: .12rem .32rem;
   border-radius: 7px;
   background: rgba(0,0,0,.05);
 }
 
-pre {
+@media (prefers-color-scheme: dark){
+  code{ background: rgba(255,255,255,.10); }
+}
+
+pre{
   padding: .95rem 1.05rem;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: auto;
   border: 1px solid var(--line);
   background: rgba(0,0,0,.03);
 }
 
-blockquote {
-  border-left-width: 4px;
-  opacity: .95;
+@media (prefers-color-scheme: dark){
+  pre{ background: rgba(255,255,255,.06); }
 }
 
-.skip-link {
+blockquote{
+  border-left: 4px solid var(--line);
+  padding-left: .9rem;
+  opacity: .98;
+}
+
+/* Accessibility: skip link */
+.skip-link{
   position: absolute;
   left: -999px;
   top: auto;
@@ -67,19 +133,15 @@ blockquote {
   overflow: hidden;
 }
 
-.skip-link:focus {
+.skip-link:focus{
   left: 1rem;
   top: 1rem;
   width: auto;
   height: auto;
   padding: .5rem .75rem;
-  background: #fff;
-  border: 2px solid #000;
-  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
   z-index: 9999;
 }
-
-/* Future: if you later add a subtle Diogenes sketch, keep it low-contrast.
-   Example (disabled until you add an image):
-   body { background: url('/assets/img/diogenes-sketch.png') no-repeat right bottom fixed; background-size: 240px; }
-*/

@@ -4,25 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     {% seo %}
-
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-      .site-nav { margin: 1rem 0 1.25rem 0; display: flex; flex-wrap: wrap; gap: .75rem; }
-      .site-nav a { text-decoration: none; font-weight: 600; }
-      .site-nav a:hover { text-decoration: underline; }
-      .tagline { margin-top: .25rem; opacity: .9; }
-      .page-header { padding-bottom: 1rem; }
-    </style>
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
+
     <section class="page-header">
       <h1 class="project-name">{{ site.title }}</h1>
-      <h2 class="project-tagline tagline">{{ site.description }}</h2>
+      <h2 class="project-tagline">{{ site.description }}</h2>
     </section>
 
     <section class="main-content" id="content">
