@@ -6,7 +6,6 @@ obtain a commercial license from the copyright holder.
 
 Contact:
 - sparog+diogenes@gmail.com
-- or open an issue in this repository
-
+- or open an issue: https://github.com/ThrosturX/diogenes-protocol/issues
 
 This file will be replaced with finalized terms.
