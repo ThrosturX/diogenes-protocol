@@ -1,4 +1,11 @@
 This repository uses a dual license:
 
-- Code (scripts and tooling): MIT License (see LICENSE-CODE)
-- Documentation, templates, and written materials: Creative Commons Attribution 4.0 International (see LICENSE-DOCS)
+1) Code (scripts and tooling under tools/):
+   - GNU Affero General Public License v3.0 or later (AGPL-3.0-or-later), see LICENSE-CODE
+   - OR a separate commercial license, see COMMERCIAL-LICENSE.md
+
+2) Documentation, templates, and written materials (doctrine/, templates/, docs/, case-studies/ text):
+   - Creative Commons Attribution 4.0 International (CC BY 4.0), see LICENSE-DOCS
+
+Attribution:
+- Please retain NOTICE in derivative works and distributions.

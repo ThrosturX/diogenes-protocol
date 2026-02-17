@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Diogenes Protocol tooling
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# See NOTICE for attribution guidance.
+
 set -euo pipefail
 
 name="${1:-}"
