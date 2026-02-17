@@ -6,6 +6,8 @@ title: Diogenes Protocol
 
 Diogenes might say: trust procedure, not promises.
 
+- [Start Here](start-here.html)
+
 This is an MVP repository for practical doctrine, templates, case-study structure, and lightweight tooling.
 
 - [Doctrine](doctrine.html)

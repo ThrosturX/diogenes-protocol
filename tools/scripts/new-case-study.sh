@@ -8,7 +8,13 @@ if [ -z "$name" ]; then
 fi
 
 base="case-studies/$name"
-mkdir -p "$base/evidence" "$base/notes"
+mkdir -p "$base/evidence/letters" \
+         "$base/evidence/screenshots" \
+         "$base/evidence/receipts" \
+         "$base/evidence/calls" \
+         "$base/evidence/logs" \
+         "$base/evidence/misc" \
+         "$base/notes"
 
 cat > "$base/CASE.md" << 'EOT'
 # Case Study: <Title>
@@ -27,7 +33,8 @@ cat > "$base/CASE.md" << 'EOT'
   - Verifiable state:
 
 ## Evidence Inventory
-- evidence/ —
+- EVIDENCE-INVENTORY.md
+- evidence/ (see packet spec)
 
 ## Mechanism Invoked
 - Policy/contract:
@@ -47,9 +54,9 @@ EOT
 cat > "$base/EVIDENCE-INVENTORY.md" << 'EOT'
 # Evidence Inventory
 
-| Item | Type | Source | Timestamp (UTC) | Hash | Notes |
-|---|---|---|---|---|---|
-|  |  |  |  |  |  |
+| ID | File | Type | Source | Timestamp (UTC) | Hash | Notes |
+|---|---|---|---|---|---|---|
+| E1 |  |  |  |  |  |  |
 EOT
 
 echo "created: $base"
