@@ -1,86 +1,138 @@
-/* Diogenes Protocol — accessible, calm, no theatrics.
-   Inspiration: warm backgrounds + corner motif, but modern contrast + spacing. */
+/* Diogenes Protocol — calm, accessible, self-contained.
+   Single source of truth. No theme dependencies. */
 
+/* ---------- Color system ---------- */
 :root{
-  --paper: #fbf7e6;     /* warm, not neon */
-  --ink: #121212;
+  color-scheme: light dark;
+
+  --bg: #fbf7e6;          /* warm paper */
+  --fg: #151515;
   --muted: rgba(0,0,0,.72);
+
   --line: rgba(0,0,0,.12);
-  --panel: rgba(0,0,0,.04);
-  --accent: #b85c00;    /* restrained orange */
-  --accent2: #2346a8;   /* restrained blue */
+  --surface: rgba(0,0,0,.04);
+
+  --link: #2346a8;
+  --link-visited: #4a3f9c;
+  --link-hover: #b85c00;
+
+  --focus: #111;
+  --shadow: rgba(0,0,0,.08);
 }
 
 @media (prefers-color-scheme: dark){
   :root{
-    --paper: #0f0f10;
-    --ink: #f2f2f2;
+    --bg: #0f0f10;
+    --fg: #f2f2f2;
     --muted: rgba(255,255,255,.72);
+
     --line: rgba(255,255,255,.16);
-    --panel: rgba(255,255,255,.06);
-    --accent: #ffb15a;
-    --accent2: #9fb5ff;
+    --surface: rgba(255,255,255,.06);
+
+    --link: #9fb5ff;
+    --link-visited: #c0a6ff;
+    --link-hover: #ffb15a;
+
+    --focus: #f2f2f2;
+    --shadow: rgba(0,0,0,.35);
   }
 }
 
+/* ---------- Base ---------- */
+*{ box-sizing: border-box; }
+
 html{ scroll-behavior: smooth; }
+
 body{
-  color: var(--ink);
-  background: var(--paper);
+  margin: 0;
+  color: var(--fg);
+  background: var(--bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Optional corner sketch (OFF by default; add a local file to enable)
-body.has-sketch{
-  background-image: url("/assets/img/diogenes-sketch.png");
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-attachment: fixed;
-  background-size: 240px;
-}
-*/
-
-.main-content{
-  max-width: 58rem;
-  font-size: 17px;
-}
-
-.main-content p,
-.main-content li{
-  line-height: 1.65;
-}
-
-.main-content h1,
-.main-content h2,
-.main-content h3{
-  margin-top: 1.8rem;
-}
-
-.main-content a{
-  color: var(--accent2);
+a{
+  color: var(--link);
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
-
-.main-content a:visited{
-  color: color-mix(in srgb, var(--accent2) 70%, var(--ink) 30%);
+a:visited{ color: var(--link-visited); }
+a:hover{ color: var(--link-hover); }
+a:focus-visible{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
-.main-content a:hover{
-  color: var(--accent);
-  text-decoration: underline;
+/* Skip link */
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus{
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: .5rem .75rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 2px solid var(--focus);
+  border-radius: 12px;
+  z-index: 9999;
 }
 
+/* ---------- Layout ---------- */
+.page-header{
+  padding: 1.35rem 1rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+
+.project-name{
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  letter-spacing: .2px;
+}
+
+.project-tagline{
+  margin: .25rem 0 0;
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.main-content{
+  max-width: 58rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+  font-size: 17px;
+}
+
+@media (max-width: 540px){
+  .main-content{ font-size: 16px; }
+}
+
+/* ---------- Navigation ---------- */
 .site-nav{
   display: flex;
   flex-wrap: wrap;
-  gap: .65rem;
-  padding: .75rem .9rem;
+  gap: .55rem .65rem;
+  padding: .75rem .85rem;
+  margin: 0 0 1.1rem;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: var(--panel);
+  background: var(--surface);
+  box-shadow: 0 1px 0 var(--shadow);
 }
 
 .site-nav a{
+  display: inline-block;
   padding: .22rem .45rem;
   border-radius: 12px;
   font-weight: 650;
@@ -90,17 +142,48 @@ body.has-sketch{
 .site-nav a:hover{
   background: rgba(0,0,0,.06);
 }
-
 @media (prefers-color-scheme: dark){
   .site-nav a:hover{ background: rgba(255,255,255,.08); }
+}
+
+/* ---------- Typography ---------- */
+p, li{
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4{
+  margin: 1.6rem 0 .65rem;
+  line-height: 1.25;
+}
+
+h1{ font-size: 1.55rem; }
+h2{ font-size: 1.25rem; }
+h3{ font-size: 1.1rem; }
+
+hr{
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.3rem 0;
+}
+
+blockquote{
+  margin: 1rem 0;
+  padding: .25rem 0 .25rem .9rem;
+  border-left: 4px solid var(--line);
+  color: var(--muted);
+}
+
+ul, ol{
+  padding-left: 1.25rem;
 }
 
 code{
   padding: .12rem .32rem;
   border-radius: 7px;
   background: rgba(0,0,0,.05);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: .95em;
 }
-
 @media (prefers-color-scheme: dark){
   code{ background: rgba(255,255,255,.10); }
 }
@@ -112,96 +195,74 @@ pre{
   border: 1px solid var(--line);
   background: rgba(0,0,0,.03);
 }
-
 @media (prefers-color-scheme: dark){
   pre{ background: rgba(255,255,255,.06); }
 }
-
-blockquote{
-  border-left: 4px solid var(--line);
-  padding-left: .9rem;
-  opacity: .98;
+pre code{
+  padding: 0;
+  background: transparent;
 }
 
-/* Accessibility: skip link */
-.skip-link{
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+/* Tables (if any) */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+th, td{
+  border: 1px solid var(--line);
+  padding: .5rem .6rem;
+  vertical-align: top;
+}
+th{
+  background: var(--surface);
+  text-align: left;
 }
 
-.skip-link:focus{
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
-  padding: .5rem .75rem;
-  background: var(--paper);
-  color: var(--ink);
-  border: 2px solid var(--ink);
-  border-radius: 12px;
-  z-index: 9999;
-}
-
-/* DI-IMAGE-START: subtle Diogenes background blend */
-body::after {
-  content: "";
+/* ---------- Corner art (uses your pre-feathered PNG alpha) ---------- */
+.corner-art{
   position: fixed;
-  right: -60px;
-  bottom: -40px;
-  width: 420px;
-  height: 520px;
-
-  background-image: url("/assets/img/diogenes-gerome.jpg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain;
+  right: -70px;
+  bottom: -55px;
+  width: clamp(260px, 40vw, 540px);
+  height: auto;
 
   pointer-events: none;
+
+  /* Below content but visible through transparent surfaces */
   z-index: 0;
 
   opacity: 0.22;
-
-  filter:
-    blur(1.2px)
-    saturate(0.72)
-    contrast(0.88)
-    brightness(1.02);
-
-  mask-image: radial-gradient(
-    ellipse 65% 75% at 60% 70%,
-    rgba(0,0,0,0.85) 0%,
-    rgba(0,0,0,0.55) 40%,
-    rgba(0,0,0,0.25) 65%,
-    rgba(0,0,0,0.0) 100%
-  );
-
-  -webkit-mask-image: radial-gradient(
-    ellipse 65% 75% at 60% 70%,
-    rgba(0,0,0,0.85) 0%,
-    rgba(0,0,0,0.55) 40%,
-    rgba(0,0,0,0.25) 65%,
-    rgba(0,0,0,0.0) 100%
-  );
+  filter: blur(1.2px) saturate(0.70) contrast(0.90) brightness(1.02);
+  mix-blend-mode: multiply;
 }
 
-.main-content,
-.page-header {
+@media (prefers-color-scheme: dark){
+  .corner-art{
+    opacity: 0.16;
+    filter: blur(1.3px) saturate(0.62) contrast(0.88) brightness(0.95);
+    mix-blend-mode: screen;
+  }
+}
+
+@media (max-width: 520px){
+  .corner-art{
+    right: -110px;
+    bottom: -90px;
+    opacity: 0.12;
+  }
+}
+
+/* Ensure content layers above the art */
+.page-header,
+.main-content{
   position: relative;
   z-index: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  body::after {
-    opacity: 0.16;
-    filter:
-      blur(1.4px)
-      saturate(0.65)
-      contrast(0.85)
-      brightness(0.95);
-  }
+/* Print: remove decoration */
+@media print{
+  .corner-art{ display: none; }
+  body{ background: #fff; color: #000; }
+  a{ color: #000; text-decoration: underline; }
 }
-/* DI-IMAGE-END */
