@@ -17,7 +17,6 @@ This is an MVP repository for practical doctrine, templates, case-study structur
 - [Tools](tools.html)
 - [Disclaimer](disclaimer.html)
 
-<!-- DI-START -->
 ## Start here
 
 If you do nothing else, read **Start Here** and adopt the packet habit.
@@ -34,7 +33,6 @@ Clone the repository and everything works without internet:
 
 - doctrine and templates are plain text
 - tools are small scripts under `tools/scripts/`
-<!-- DI-START -->
 
 ## Notes
 - [Micro-posts](notes/micro-posts.html)
