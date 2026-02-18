@@ -5,6 +5,15 @@ layout: default
 
 # Packet spec (MVP)
 
+## Packet checklist
+
+- Timeline (UTC timestamps if possible)
+- Tickets / confirmations / receipts / invoices
+- Screenshots + original emails (exported)
+- Call notes (who/when/what)
+- Copies of letters sent + proofs of sending
+- Hash inventory (optional, for integrity)
+
 A “packet” is a shareable directory layout that keeps evidence coherent, referenced, and exportable.
 
 ## Required structure

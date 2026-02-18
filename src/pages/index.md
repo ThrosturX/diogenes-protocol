@@ -1,5 +1,11 @@
 # Diogenes Protocol
 
+Offline-first documentation for building packets (evidence + letters) with Diogenes’ frankness and a lawyer’s restraint.
+
+- Start: [Start Here](start-here.html)
+- Scope + posture: [Why Diogenes](why-diogenes.html)
+- Ready-to-send letters: [Templates](templates.html)
+
 Diogenes might say: trust procedure, not promises.
 
 ## Start here

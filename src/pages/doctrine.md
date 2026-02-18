@@ -5,6 +5,15 @@ layout: default
 
 # Doctrine
 
+## Rules of engagement
+
+- Write for the record. Assume everything will be reviewed later.
+- One claim per sentence. Prefer short, checkable statements.
+- Ask once, follow up once, then escalate (with a clock).
+- Separate facts from requests. Facts first, then the ask.
+- Never depend on live links. Export and store evidence locally.
+- Be calm and mechanical. Emotion belongs in private notes, not outbound letters.
+
 > Diogenes might say: do not ask whether power is honest. Ask whether power can prove it.
 
 ## Axioms (MVP)

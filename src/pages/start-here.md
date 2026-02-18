@@ -5,6 +5,13 @@ layout: default
 
 # Start Here (5 minutes)
 
+## Route map
+
+- Read [Why Diogenes](why-diogenes.html) to calibrate posture and scope.
+- Skim [Doctrine](doctrine.html) for rules you can execute under stress.
+- Use [Packet Spec](packet-spec.html) to build the evidence bundle.
+- Pick a [Template](templates.html), tailor it, and keep everything in the packet.
+
 Diogenes might say: if it isn’t verifiable, it isn’t real.
 
 ## 1) Preserve evidence first

@@ -5,6 +5,12 @@ layout: default
 
 # Templates
 
+## How to use templates
+
+- Pick the smallest template that matches the request.
+- Fill in identifiers and dates first; then paste facts from your packet.
+- Keep outbound text boring: factual, bounded, deadline-aware.
+
 MVP set:
 
 - [GDPR DSAR (EU/EEA)](../templates/dsar/gdpr-dsar.md)
