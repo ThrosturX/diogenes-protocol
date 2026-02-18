@@ -1,8 +1,17 @@
-Diogenes Protocol — procedural autonomy, privacy literacy, institutional accountability.
+Diogenes Protocol
+Copyright (C) 2026 ThrosturX and contributors
 
-If you use or adapt the tooling from this repository, retain this notice and provide attribution
-in documentation and/or an about page:
+This repository is licensed under the GNU Affero General Public License, version 3
+or (at your option) any later version (AGPL-3.0-or-later). See LICENSE.
 
-"Includes tooling from Diogenes Protocol (diogenes-protocol)."
+This project is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See LICENSE for details.
 
-Repository: https://github.com/ThrosturX/diogenes-protocol
+Trademark notice:
+“Diogenes Protocol” and associated marks/logos may be protected as trademarks.
+See TRADEMARK.md for permitted use.
+
+Third-party material:
+If any files are identified as third-party content, they are licensed by their
+respective owners under the terms noted in or alongside those files.
