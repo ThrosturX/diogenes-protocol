@@ -12,7 +12,7 @@ Do not open a public issue for vulnerabilities.
 
 Preferred reporting channels (pick one and fill it in):
 - GitHub private vulnerability reporting (recommended if enabled)
-- Email: <maintainer-email-here>
+- Email: sparog+diogenes@gmail.com
 
 Include:
 - a clear description of the issue and impact
