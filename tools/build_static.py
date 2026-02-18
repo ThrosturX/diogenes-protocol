@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
 import re, html, shutil
 from pathlib import Path
+# CHURN_GUARD_WRITE_TEXT: avoid rewriting identical outputs (keeps git clean across rebuilds)
+try:
+    _orig_write_text = Path.write_text
+    def _write_text_if_changed(self, data, encoding=None, errors=None, newline=None):
+        try:
+            if self.exists():
+                prev = self.read_text(encoding=encoding or "utf-8", errors=errors)
+                if prev == data:
+                    return len(data)
+        except Exception:
+            pass
+        try:
+            self.parent.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
+        return _orig_write_text(self, data, encoding=encoding, errors=errors, newline=newline)
+    Path.write_text = _write_text_if_changed
+except Exception:
+    pass
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT  = ROOT / "docs"                 # publish folder
