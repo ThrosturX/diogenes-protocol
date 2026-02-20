@@ -64,7 +64,7 @@ process_file() {
         sed -i "$pat" "$dest"
     done
 
-    local new_hash=$(sha256sum "$dest" | cut -d' ' -f1)
+    local new_hash=$($hash_tool "$dest" | cut -d' ' -f1)
 
     echo "✓ ${rel}" >> "$AUDIT_LOG"
     echo "   Before: ${orig_hash:0:16}..." >> "$AUDIT_LOG"
