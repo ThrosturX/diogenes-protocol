@@ -53,7 +53,9 @@ process_file() {
     local src="$1"
     local rel="${src#${TARGET}/}"
     local dest="${REDACTED_DIR}/${rel}"
-    local orig_hash=$(sha256sum "$src" 2>/dev/null | cut -d' ' -f1 || echo "N/A")
+    local hash_tool="sha256sum"
+    command -v sha256sum >/dev/null || hash_tool="shasum -a 256"
+    local orig_hash=$($hash_tool "$src" 2>/dev/null | cut -d' ' -f1 || echo "N/A")
 
     mkdir -p "$(dirname "$dest")"
     cp "$src" "$dest"
