@@ -1,6 +1,6 @@
 # AI / LLM Model Training Data Rights Request
 
-**Packet ID:** [YOUR-PACKET-ID-HERE]  
+**Packet ID:** [Packet ID]  
 **Prepared:** [YYYY-MM-DDThh:mm:ssZ UTC]  
 **Recipient:** Privacy Officer / Data Protection Officer, [Company Name]  
 **Your Reference:** [Account ID / Email (redacted) / other stable identifier]
