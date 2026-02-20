@@ -121,3 +121,8 @@ If applying for API credits (e.g., Codex Open Source Fund), the highest-value us
 - build tooling improvements and automation
 - template validation/linting for safe defaults
 
+
+### Milestone 2 – Template engine discipline (in progress)
+- [x] DSAR/privacy flows
+- [x] EU261 airline compensation
+- [ ] AI / LLM Model Training Data Rights Request (new in this PR)
