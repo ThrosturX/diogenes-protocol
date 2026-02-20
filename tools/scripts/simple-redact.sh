@@ -2,16 +2,25 @@
 # Diogenes Protocol – simple-redact.sh (Redact Guardian)
 # Minimalist offline PII redaction helper – zero dependencies
 # Always creates a timestamped REDACTED copy. Never modifies originals.
-# Aligns with doctrine: verifiable, auditable, local-first, share-safe.
+# Fully cross-platform (Linux + macOS + WSL)
 
 set -euo pipefail
 
-VERSION="0.1.0"
+VERSION="0.2.0"
 TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
 REDACTED_DIR="REDACTED_${TIMESTAMP}"
 AUDIT_LOG="${REDACTED_DIR}/redaction-audit.log"
 DRY_RUN=0
 TARGET="${1:-.}"
+
+# Portable sed -i (GNU Linux vs BSD/macOS)
+sed_i() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        sed -i '' "$@"
+    else
+        sed -i "$@"
+    fi
+}
 
 usage() {
     cat <<EOF
@@ -22,11 +31,15 @@ Usage: $(basename "$0") [--dry-run] [TARGET]
 TARGET: single .md/.txt file or packet directory (default: current dir)
 --dry-run: show what would be redacted, no files written
 
+Examples:
+  $(basename "$0") --dry-run .
+  $(basename "$0") my-packet-folder/
+
 Patterns redacted (case-insensitive):
   • Email addresses
-  • Phone numbers (international + local)
+  • Phone numbers
   • IPv4 addresses
-  • Account/UUID-like strings (8+ alphanum with dashes)
+  • Account/UUID-like identifiers
 EOF
     exit 0
 }
@@ -36,7 +49,7 @@ EOF
 [[ ! -e "$TARGET" ]] && { echo "❌ Target not found: $TARGET"; exit 1; }
 
 mkdir -p "$REDACTED_DIR"
-echo "🛡️  Diogenes Redact Guardian v${VERSION} – ${TIMESTAMP} UTC" > "$AUDIT_LOG"
+echo "Diogenes Redact Guardian v${VERSION} – ${TIMESTAMP} UTC" > "$AUDIT_LOG"
 echo "Mode: $([[ $DRY_RUN -eq 1 ]] && echo DRY-RUN || echo LIVE)" >> "$AUDIT_LOG"
 echo "Target: $TARGET" >> "$AUDIT_LOG"
 echo "────────────────────────────────────" >> "$AUDIT_LOG"
@@ -46,25 +59,27 @@ declare -a PATTERNS=(
     's/[[:alnum:]._%+-]\+@[[:alnum:].-]\+\.[[:alpha:]]\{2,\}/[REDACTED_EMAIL]/gI'
     's/\+?[0-9][0-9[:space:]\-\(\)]\{8,\}/[REDACTED_PHONE]/gI'
     's/\b([0-9]{1,3}\.){3}[0-9]{1,3}\b/[REDACTED_IP]/g'
-    's/\b[A-Z0-9-]{8,}\b/[REDACTED_ACCOUNT]/gI'
+    's/\b[A-Z0-9][A-Z0-9-]{7,}[A-Z0-9]\b/[REDACTED_ACCOUNT]/gI'
 )
+
+# Cross-platform hash tool
+hash_tool="sha256sum"
+command -v sha256sum >/dev/null || hash_tool="shasum -a 256"
 
 process_file() {
     local src="$1"
     local rel="${src#${TARGET}/}"
     local dest="${REDACTED_DIR}/${rel}"
-    local hash_tool="sha256sum"
-    command -v sha256sum >/dev/null || hash_tool="shasum -a 256"
     local orig_hash=$($hash_tool "$src" 2>/dev/null | cut -d' ' -f1 || echo "N/A")
 
     mkdir -p "$(dirname "$dest")"
     cp "$src" "$dest"
 
     for pat in "${PATTERNS[@]}"; do
-        sed -i "$pat" "$dest"
+        sed_i "$pat" "$dest"
     done
 
-    local new_hash=$($hash_tool "$dest" | cut -d' ' -f1)
+    local new_hash=$($hash_tool "$dest" 2>/dev/null | cut -d' ' -f1 || echo "N/A")
 
     echo "✓ ${rel}" >> "$AUDIT_LOG"
     echo "   Before: ${orig_hash:0:16}..." >> "$AUDIT_LOG"
