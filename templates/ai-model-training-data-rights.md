@@ -22,7 +22,7 @@ Pursuant to applicable data subject rights, I request:
 
 5. A timeline for each step above (maximum 30 calendar days).
 
-This request is accompanied by the associated evidence packet (ID: [YOUR-PACKET-ID-HERE]) containing timeline and inventory.
+This request is accompanied by the associated evidence packet (ID referenced above) containing timeline and inventory.
 
 Please reply to this email/thread and reference the Packet ID above.
 
