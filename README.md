@@ -99,6 +99,7 @@ Scaffolding helpers exist in:
 Hash/inventory helpers exist in:
 
 - `tools/scripts/hash-inventory.sh`
+* tools/scripts/simple-redact.sh - safe offline PII redaction helper (Redact Guardian)
 - `tools/scripts/pack.sh`
 
 ---
