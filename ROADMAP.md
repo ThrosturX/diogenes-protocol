@@ -63,7 +63,7 @@ Deliverables
   - account deletion request
   - rectification request
   - airline escalation cover note (procedural, non-defamatory)
-- [ ] Escalation Ladder template (general procedural chain for any bureaucracy)
+- Escalation Ladder template (general procedural chain for any bureaucracy)
 
 Acceptance criteria
 - Templates have consistent headers, placeholders, and disclaimers where needed

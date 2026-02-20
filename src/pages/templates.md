@@ -23,3 +23,5 @@ MVP set:
 - [Rectification request](../templates/privacy/rectification-request.md)
 - [EU261 compensation request](../templates/airline/eu261-compensation-request.md)
 - [Ticketing mismatch / denied boarding](../templates/airline/ticketing-mismatch-denied-boarding.md)
+
+- [Escalation Ladder (procedural chain for any bureaucracy)](../templates/escalation-ladder.md)
